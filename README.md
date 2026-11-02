@@ -110,3 +110,16 @@ branch unchanged.
 - **[FrankBarretta](https://github.com/FrankBarretta)** — port from Linux to
   Android (this branch and the consumer app
   [`LSFG-Android`](../LSFG-Android/)).
+# lsfg-vk Android Legacy
+
+This repository preserves the legacy MIT-licensed Android port of lsfg-vk used
+by Moonlight V+. It is based on commit `3e89e5439a98f55d5acb003d20039426ab24e69c`
+from the former Android fork and is maintained separately from lsfg-vk v2.
+
+The DXBC dependency is vendored at `thirdparty/dxbc` from commit
+`78ab59a8aaeb43cd1b0a5e91ba86722433a10b78` because its original remote
+repository is no longer available. The original license and attribution are
+preserved in that directory.
+
+This repository does not contain `Lossless.dll` or any proprietary asset.
+
