@@ -62,9 +62,10 @@ pulls `framegen/` in via CMake `add_subdirectory()` from the relative path
 
 ## Differences from upstream `lsfg-vk` 1.0.0
 
-No upstream files were removed and no new top-level files were added — the
-Android branch is a set of additive `#ifdef __ANDROID__` patches inside the
-existing tree. Per-file summary:
+The Android branch is primarily a set of additive `#ifdef __ANDROID__` patches
+inside the existing tree. The upstream `pe-parse` submodule is vendored as a
+source-only library snapshot so recursive checkout does not download its
+executable test corpus. Per-file summary:
 
 | File | Change |
 |---|---|
@@ -78,7 +79,7 @@ existing tree. Per-file summary:
 | `framegen/src/core/image.cpp` | Implementation of the AHB-backed `Image` constructor. |
 | `framegen/src/core/device.cpp` | Android variant of the device-extension list. Replaces `VK_KHR_external_memory_fd` + `VK_KHR_external_semaphore_fd` with `VK_ANDROID_external_memory_android_hardware_buffer`, `VK_KHR_external_memory`, `VK_KHR_sampler_ycbcr_conversion`, `VK_KHR_dedicated_allocation`, `VK_KHR_get_memory_requirements2`, `VK_KHR_bind_memory2`, `VK_KHR_maintenance1`. `VK_EXT_robustness2` stays mandatory on both targets. |
 | Top-level `CMakeLists.txt` | Minor build glue so the Android Studio project can pull `framegen/` in via `add_subdirectory()`. |
-| `thirdparty/` | Unchanged. Same `volk`, `pe-parse`, `dxbc`, `toml11` as upstream 1.0.0. The Android Studio project consumes `volk`, `pe-parse`, and `dxbc` directly from this branch. |
+| `thirdparty/` | `pe-parse` is vendored as a source-only MIT snapshot without its test corpus; `volk`, `dxbc`, and `toml11` remain as before. The Android Studio project consumes `volk`, `pe-parse`, and `dxbc` directly from this branch. |
 
 ### Public Android API at a glance
 
